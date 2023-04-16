@@ -30,6 +30,12 @@ Este comando ejecutara las migraciones del proyecto y una vez creada las tablas 
 ```bash
 php artisan migrate --seed
 ```
+En caso de que no funcione la migración, actualize el archivo .env con los siguientes comandos.
+```bash
+php artisan cache:clear
+php artisan route:clear
+php artisan view:clear
+```
 Ahora procederemos a ejecutar el Sistema Web con los siguientes comandos:
 ```bash
 php artisan serve
