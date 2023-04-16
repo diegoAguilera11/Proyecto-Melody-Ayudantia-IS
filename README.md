@@ -1,5 +1,5 @@
 
-# Proyeto Melody Ayudantía Ingeniería de Software 2023-1
+# Proyecto Melody Ayudantía Ingeniería de Software 2023-1
 Bienvenid@s al código desarrollado en las ayudantías de Ingeniería de Software correspondientes al proyecto de la asignatura.
 
 ## IMPORTANTE
@@ -29,6 +29,12 @@ DB_PASSWORD = Es la contraseña que nosotros asignamos en la instalación, en ca
 Este comando ejecutara las migraciones del proyecto y una vez creada las tablas en la base de datos, dara paso a ejecutar los seeders que forman parte del estado predeterminado del sistema.
 ```bash
 php artisan migrate --seed
+```
+En caso de que no funcione la migración, actualize el archivo .env con los siguientes comandos.
+```bash
+php artisan cache:clear
+php artisan route:clear
+php artisan view:clear
 ```
 Ahora procederemos a ejecutar el Sistema Web con los siguientes comandos:
 ```bash
