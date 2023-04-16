@@ -16,7 +16,8 @@
                     </label>
                     <input id="name" name="name" placeholder="Ingresa tu nombre"
                         class="border p-2 rounded-lg w-full
-                @error('name') border-red-600
+                @error('name')
+                    border-red-600
                 @enderror">
                     @error('name')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-lg text-center p-2">{{ $message }}</p>

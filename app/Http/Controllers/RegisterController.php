@@ -23,14 +23,16 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
+
+        $messages = makeMessages();
         // Validación
         $this->validate($request, [
             'name' => ['required', 'min:2'],
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'min:8']
-        ]);
+        ], $messages);
 
-        // Crear al usario
+        // Crear al usuario
         User::create([
             'name' => $request->name,
             'email' => Str::lower($request->email),
