@@ -36,7 +36,8 @@ class RegisterController extends Controller
         User::create([
             'name' => $request->name,
             'email' => Str::lower($request->email),
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
+            'role' => 1
         ]);
 
         // Autenticar al usuario
@@ -46,6 +47,6 @@ class RegisterController extends Controller
         ]);
 
         // Redireccionar al usuario
-        return view('welcome');
+        return redirect()->route('concerts.index');
     }
 }
