@@ -26,6 +26,6 @@ class LoginController extends Controller
             return back()->with('message', 'Las credenciales son incorrectas');
         }
 
-        return redirect()->route('concerts.index');
+        return redirect()->route('dashboard');
     }
 }

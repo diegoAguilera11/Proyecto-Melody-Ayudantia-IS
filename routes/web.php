@@ -28,4 +28,6 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
-Route::get('/dashboard', [ConcertController::class, 'index'])->name('concerts.index');
+Route::get('/dashboard', [ConcertController::class, 'index'])->name('dashboard');
+Route::post('concert', [ConcertController::class, 'store'])->name('concert');
+Route::get('concert', [ConcertController::class, 'create'])->name('concert.create');

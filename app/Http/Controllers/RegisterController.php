@@ -47,6 +47,6 @@ class RegisterController extends Controller
         ]);
 
         // Redireccionar al usuario
-        return redirect()->route('concerts.index');
+        return redirect()->route('dashboard');
     }
 }

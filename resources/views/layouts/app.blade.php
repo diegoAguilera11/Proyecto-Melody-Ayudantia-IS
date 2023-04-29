@@ -14,7 +14,9 @@
     <header class="p-5 border-b border-blue-400 bg-blue-400">
         <div class="container mx-auto flex justify-between items-center">
             @auth
-                <img src="{{ asset('img/logo-Melody.jpg') }}" class="h-16 rounded">
+                <a href="{{ route('dashboard') }}" class="text-2xl font-black uppercase">
+                    <img src="{{ asset('img/logo-Melody.jpg') }}" class="h-16 rounded">
+                </a>
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button type="submit" class="font-bold uppercase hover:text-white transition">Cerrar Sesión</button>
