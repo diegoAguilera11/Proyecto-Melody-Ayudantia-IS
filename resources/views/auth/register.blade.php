@@ -8,7 +8,7 @@
         <div class="md:w-1/2 bg-gray-800 p-6 rounded-lg shadow-lg">
 
             <h2 class="text-center text-white uppercase font-bold text-3xl p-4">Registrate en Melody</h2>
-            <form action="{{ route('register') }}" method="POST" novalidate>
+            <form id="formulario" action="{{ route('register') }}" method="POST" novalidate>
                 @csrf
                 <div class="mb-5">
                     <label for="name" class="mb-2 block uppercase text-white font-bold">
@@ -50,9 +50,37 @@
                     @enderror
                 </div>
 
-                <input type="submit" value="Registrar"
+                <input id="boton" type="button" value="Registrar"
                     class="bg-yellow-400 hover:bg-yellow-500 transition-colors cursor-pointer uppercase font-bold text-black rounded w-full p-3">
             </form>
         </div>
     </div>
 @endsection
+
+@section('alerta')
+<script>
+    // Aqui va nuestro script de sweetalert
+    const boton = document.getElementById("boton");
+    const formulario = document.getElementById("formulario");
+
+    boton.addEventListener('click', (e) => {
+        e.preventDefault();
+        Swal.fire({
+            title: '¿Estás seguro que quieres enviar estos datos?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#4DD091',
+            cancelButtonColor: '#FF5C77',
+            confirmButtonText: 'Enviar',
+            cancelButtonText: 'Cancelar',
+            allowOutsideClick: false,
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                formulario.submit();
+            }
+        })
+    })
+</script>
+@endsection
+

@@ -7,11 +7,13 @@
     @vite('resources/css/app.css')
     @vite('resources/css/app.js')
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
     <title>Melody - @yield('title')</title>
 </head>
 
 <body class="bg-cyan-800">
-    <header class="p-5 border-b border-blue-400 bg-blue-400">
+    <header class="p-5 border-b border-blue-400 bg-cyan-500">
         <div class="container mx-auto flex justify-between items-center">
             @auth
                 <a href="{{ route('dashboard') }}" class="text-2xl font-black uppercase">
@@ -42,5 +44,5 @@
         Melody - Todos los derechos reservados {{ now()->year }}
     </footer>
 </body>
-
+    @yield('alerta')
 </html>
