@@ -15,8 +15,11 @@ class ConcertController extends Controller
 
     public function index()
     {
+        $concerts = Concert::getConcerts();
         // Retornar al dashboard
-        return view('layouts.dashboard');
+        return view('layouts.dashboard', [
+            'concerts' => $concerts,
+        ]);
     }
 
     public function create()
@@ -59,7 +62,7 @@ class ConcertController extends Controller
             'image' => "843392092f000"
         ]);
 
-        // toastr()->success('El concierto fue creado con éxito', 'Concierto creado!');
+        toastr()->success('El concierto fue creado con éxito', 'Concierto creado!');
 
         return redirect()->route('dashboard');
     }

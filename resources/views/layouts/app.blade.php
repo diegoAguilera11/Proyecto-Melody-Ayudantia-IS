@@ -12,8 +12,8 @@
     <title>Melody - @yield('title')</title>
 </head>
 
-<body class="bg-cyan-800">
-    <header class="p-5 border-b border-blue-400 bg-cyan-500">
+<body class="bg-slate-500">
+    <header class="p-5 bg-gray-700">
         <div class="container mx-auto flex justify-between items-center">
             @auth
                 <a href="{{ route('dashboard') }}" class="text-2xl font-black uppercase">
@@ -21,7 +21,7 @@
                 </a>
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <button type="submit" class="font-bold uppercase hover:text-white transition">Cerrar Sesión</button>
+                    <button type="submit" class="text-white font-bold uppercase hover:text-gray-400 transition-all">Cerrar Sesión</button>
                 </form>
             @endauth
             @guest
@@ -30,8 +30,8 @@
                 </a>
                 <nav class="flex flex-col gap-2 items-center">
                     <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
-                    <a href="{{ route('login') }}" class="font-bold uppercase hover:text-white">Iniciar Sesión</a>
-                    <a href="{{ route('register') }}" class="font-bold uppercase hover:text-white">Crear Cuenta</a>
+                    <a href="{{ route('login') }}" class="text-white font-bold uppercase hover:text-gray-400 transition-all">Iniciar Sesión</a>
+                    <a href="{{ route('register') }}" class="text-white font-bold uppercase hover:text-gray-400 transition-all">Crear Cuenta</a>
                 </nav>
             @endguest
         </div>

@@ -8,8 +8,7 @@
         <h2 class="text-center text-white uppercase font-bold text-3xl p-4">Registra un Concierto</h2>
         <div class="md:flex md:items-center gap-8">
             <div class="md:w-full">
-                {{-- <div class="md:w-1/2"> --}}
-                <form action="{{ route('concert') }}" method="POST" novalidate>
+                <form id="formulario" action="{{ route('concert') }}" method="POST" novalidate>
                     @csrf
                     <div class="mb-5">
                         <label for="name" class="mb-2 block uppercase text-white font-bold">
@@ -66,10 +65,37 @@
                                 {{ session('message') }}</p>
                         @endif
                     </div>
-                    <input type="submit" value="Crear Concierto"
+                    <input id="boton" type="button" value="Crear Concierto"
                         class="bg-yellow-400 hover:bg-yellow-600 transition-all cursor-pointer uppercase font-bold text-black rounded w-full p-3">
                 </form>
             </div>
         </div>
     </div>
+@endsection
+
+@section('alerta')
+<script>
+    // Aqui va nuestro script de sweetalert
+    const boton = document.getElementById("boton");
+    const formulario = document.getElementById("formulario");
+
+    boton.addEventListener('click', (e) => {
+        e.preventDefault();
+        Swal.fire({
+            title: '¿Estás seguro que quieres crear un concierto con estos datos?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#4DD091',
+            cancelButtonColor: '#FF5C77',
+            confirmButtonText: 'Enviar',
+            cancelButtonText: 'Cancelar',
+            allowOutsideClick: false,
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                formulario.submit();
+            }
+        })
+    })
+</script>
 @endsection
