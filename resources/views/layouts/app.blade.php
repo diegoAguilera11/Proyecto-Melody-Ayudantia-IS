@@ -44,5 +44,5 @@
         Melody - Todos los derechos reservados {{ now()->year }}
     </footer>
 </body>
-    @yield('alerta')
+    @yield('alerts')
 </html>
