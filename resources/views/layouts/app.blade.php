@@ -45,4 +45,5 @@
     </footer>
 </body>
     @yield('alerts')
+    @yield('script')
 </html>

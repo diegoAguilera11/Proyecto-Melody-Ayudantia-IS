@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Concert;
 use App\Models\DetailOrder;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreDetailOrderRequest;
-use App\Http\Requests\UpdateDetailOrderRequest;
 
 class DetailOrderController extends Controller
 {
@@ -34,6 +32,13 @@ class DetailOrderController extends Controller
      */
     public function store(Request $request, $id)
     {
+
+        $reservation_number = generateReservationNumber();
+
+        //Modificar request
+        $request->request->add(['reservation_number' => $reservation_number]);
+
+
         $messages = makeMessages();
         $this->validate($request, [
             'quantity' => ['required', 'numeric', 'min:1'],
@@ -49,7 +54,7 @@ class DetailOrderController extends Controller
         }
 
         //Crear la orden de compra
-        DetailOrder::create([
+        $detail_order = DetailOrder::create([
             'reservation_number' => '1234',
             'quantity' => $request->quantity,
             'total' => $request->total,
@@ -61,8 +66,9 @@ class DetailOrderController extends Controller
         // Descontar el stock del concierto
         discountStock($id, $request->quantity);
 
-        toastr()->success('La entrada fue comprada con exito', 'Entrada comprada!');
-        return redirect()->route('dashboard');
+        return redirect()->route('generate.pdf', [
+            'id' => $detail_order->id
+        ]);
     }
 
     /**
@@ -84,7 +90,7 @@ class DetailOrderController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDetailOrderRequest $request, DetailOrder $detailOrder)
+    public function update(Request $request, DetailOrder $detailOrder)
     {
         //
     }

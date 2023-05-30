@@ -57,7 +57,7 @@
     </div>
 @endsection
 
-@section('alerta')
+@section('alerts')
 <script>
     // Aqui va nuestro script de sweetalert
     const boton = document.getElementById("boton");
