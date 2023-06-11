@@ -9,6 +9,7 @@ function makeMessages()
         'name.required' => 'El campo nombre es requerido.',
         'email.required' => 'El campo correo electrónico es requerido.',
         'price.required' => 'El campo precio es requerido.',
+        'price.min' => 'El campo precio debe ser mayor o igual a :min.',
         'stock.required' => 'El campo stock es requerido.',
         'date.required' => 'El campo fecha es requerido.',
         'date.date' => 'Ingrese una fecha válida.',

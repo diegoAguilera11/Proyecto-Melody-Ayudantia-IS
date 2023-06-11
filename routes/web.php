@@ -23,6 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+
 // Register Routes
 Route::get('register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);

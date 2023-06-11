@@ -103,7 +103,7 @@ class ConcertController extends Controller
 
     public function myConcerts()
     {
-        // dd(auth()->user());
+
         return view('client.my_concerts', [
             'user' => auth()->user()
         ]);

@@ -55,7 +55,7 @@ class DetailOrderController extends Controller
 
         //Crear la orden de compra
         $detail_order = DetailOrder::create([
-            'reservation_number' => '1234',
+            'reservation_number' => $request->reservation_number,
             'quantity' => $request->quantity,
             'total' => $request->total,
             'payment_method' => $request->pay_method,
