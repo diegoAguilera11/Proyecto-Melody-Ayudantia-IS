@@ -20,7 +20,8 @@
                     <input id="email" name="email" placeholder="correo@correo.com"
                         class="border p-2 rounded-lg w-full
                 @error('email') border-red-600
-                @enderror">
+                @enderror"
+                value="{{ old('email') }}">
                     @error('email')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-lg text-center p-2">{{ $message }}</p>
                     @enderror

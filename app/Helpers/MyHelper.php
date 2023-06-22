@@ -8,8 +8,11 @@ function makeMessages()
     $messages = [
         'name.required' => 'El campo nombre es requerido.',
         'email.required' => 'El campo correo electrónico es requerido.',
+        'email.unique' => 'El correo electrónico ya se encuentra en el sistema.',
         'price.required' => 'El campo precio es requerido.',
         'price.min' => 'El campo precio debe ser mayor o igual a :min.',
+        'price.max' => 'Ingrese un precio válido.',
+        'price.numeric' => 'El campo precio debe ser un valor númerico.',
         'stock.required' => 'El campo stock es requerido.',
         'date.required' => 'El campo fecha es requerido.',
         'date.date' => 'Ingrese una fecha válida.',

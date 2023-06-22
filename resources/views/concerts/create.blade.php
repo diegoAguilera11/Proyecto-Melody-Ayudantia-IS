@@ -17,7 +17,8 @@
                         <input id="name" name="name"
                             class="border p-2 rounded-lg w-full
                     @error('name') border-red-600
-                    @enderror" value="{{ old('name') }}" >
+                    @enderror" value="{{ old('name') }}"
+                    value="{{ old('name') }}">
                         @error('name')
                             <p class="bg-red-500 text-white my-2 rounded-lg text-lg text-center p-2">{{ $message }}</p>
                         @enderror
@@ -30,7 +31,8 @@
                         <input id="price" name="price"
                             class="border p-2 rounded-lg w-full
                     @error('price') border-red-600
-                    @enderror" value="{{ old('price') }}">
+                    @enderror" value="{{ old('price') }}"
+                    value="{{ old('price') }}">
                         @error('price')
                             <p class="bg-red-500 text-white my-2 rounded-lg text-lg text-center p-2">{{ $message }}</p>
                         @enderror
@@ -43,7 +45,8 @@
                         <input id="stock" name="stock" type="text"
                             class="border p-2 rounded-lg w-full
                     @error('stock') border-red-600
-                    @enderror" value="{{ old('stock') }}">
+                    @enderror" value="{{ old('stock') }}"
+                    value="{{ old('stock') }}">
                         @error('stock')
                             <p class="bg-red-500 text-white my-2 rounded-lg text-lg text-center p-2">{{ $message }}</p>
                         @enderror
@@ -56,7 +59,8 @@
                         <input id="date" name="date" type="date" onkeydown="return false"
                             class="border p-2 rounded-lg w-full
                     @error('date') border-red-600
-                    @enderror" value="{{ old('date') }}">
+                    @enderror" value="{{ old('date') }}"
+                    value="{{ old('date') }}">
                         @error('date')
                             <p class="bg-red-500 text-white my-2 rounded-lg text-lg text-center p-2">{{ $message }}</p>
                         @enderror

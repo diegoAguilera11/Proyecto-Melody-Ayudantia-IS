@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ConcertController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DetailOrderController;
@@ -43,10 +44,19 @@ Route::post('concert-search', [ConcertController::class, 'searchDate'])->name('c
 
 Route::get('/concert-list', [ConcertController::class, 'concertsList'])->name('concert.list');
 
+Route::get('/concerts', [ConcertController::class, 'allConcerts'])->name('concerts');
+Route::get('/concert-clients/{id}', [ConcertController::class, 'concertClients'])->name('concert.clients');
+
+
 // Order Concerts
 Route::get('/concert-order/{id}', [DetailOrderController::class, 'create'])->name('concert.order');
 Route::post('/concert-order/{id}', [DetailOrderController::class, 'store'])->name('concert.order.pay');
 Route::get('/my-concerts', [ConcertController::class, 'myConcerts'])->name('client.concerts');
+
+Route::get('/edit-profile', [ProfileController::class, 'index'])->name('profile.index');
+Route::post('/edit-profile', [ProfileController::class, 'store'])->name('profile.store');
+
+
 
 // Voucher
 Route::get('/detail-order/{id}', [VoucherController::class, 'generatePDF'])->name('generate.pdf');

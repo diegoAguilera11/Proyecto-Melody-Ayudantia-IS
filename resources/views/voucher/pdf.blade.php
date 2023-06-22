@@ -94,7 +94,33 @@
     <hr>
     <div class="total">
         <p class="total-pay">Total pagado: {{ $detail_order->total }}</p>
-        <p class="method-pay">{{ $detail_order->payment_method }}</p>
+
+            {
+                @switch($detail_order->payment_method)
+                    @case("1")
+                    <p class="method-pay">
+                        Efectivo
+                    </p>
+                        @break
+                    @case("2")
+                    <p class="method-pay">
+                        Transferencia
+                    </p>
+                        @break
+                    @case("3")
+                    <p class="method-pay">
+                        Débito
+                    </p>
+                    @break
+                    @case("4")
+                    <p class="method-pay">
+                        Crédito
+                    </p>
+                    @break
+                    @default
+
+                @endswitch
+            }
     </div>
 </body>
 

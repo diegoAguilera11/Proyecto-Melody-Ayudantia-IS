@@ -19,4 +19,9 @@ class Concert extends Model
     {
         return self::all();
     }
+
+    public function detailOrder()
+    {
+        return $this->hasMany(DetailOrder::class, 'concert_id');
+    }
 }
