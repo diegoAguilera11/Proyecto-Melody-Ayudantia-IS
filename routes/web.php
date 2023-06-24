@@ -37,28 +37,40 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
 Route::get('/dashboard', [ConcertController::class, 'index'])->name('dashboard');
 
-// Concert Routes
-Route::post('concert', [ConcertController::class, 'store'])->name('concert');
-Route::get('concert', [ConcertController::class, 'create'])->name('concert.create');
-Route::post('concert-search', [ConcertController::class, 'searchDate'])->name('concert.search');
+Route::middleware(['routesAdmin'])->group(function () {
 
-Route::get('/concert-list', [ConcertController::class, 'concertsList'])->name('concert.list');
+    // Images
+    Route::post('/images', [ImageController::class, 'store'])->name('images.store');
 
-Route::get('/concerts', [ConcertController::class, 'allConcerts'])->name('concerts');
-Route::get('/concert-clients/{id}', [ConcertController::class, 'concertClients'])->name('concert.clients');
+    // Concert Routes
+    Route::post('concert', [ConcertController::class, 'store'])->name('concert');
+    Route::get('concert', [ConcertController::class, 'create'])->name('concert.create');
+
+    Route::get('/concerts', [ConcertController::class, 'allConcerts'])->name('concerts');
+    Route::get('/concert-clients/{id}', [ConcertController::class, 'concertClients'])->name('concert.clients');
+
+    // Search Client
+    Route::get('/client-search', [ConcertController::class, 'searchClient'])->name('client.search');
+});
 
 
-// Order Concerts
-Route::get('/concert-order/{id}', [DetailOrderController::class, 'create'])->name('concert.order');
-Route::post('/concert-order/{id}', [DetailOrderController::class, 'store'])->name('concert.order.pay');
-Route::get('/my-concerts', [ConcertController::class, 'myConcerts'])->name('client.concerts');
+Route::middleware(['routesClient'])->group(function () {
+
+
+    Route::post('concert-search', [ConcertController::class, 'searchDate'])->name('concert.search');
+    Route::get('/concert-list', [ConcertController::class, 'concertsList'])->name('concert.list');
+
+    // Detail Concerts
+    Route::get('/concert-order/{id}', [DetailOrderController::class, 'create'])->name('concert.order');
+    Route::post('/concert-order/{id}', [DetailOrderController::class, 'store'])->name('concert.order.pay');
+    Route::get('/my-concerts', [ConcertController::class, 'myConcerts'])->name('client.concerts');
+
+    // Voucher
+    Route::get('/detail-order/{id}', [VoucherController::class, 'generatePDF'])->name('generate.pdf');
+});
 
 Route::get('/edit-profile', [ProfileController::class, 'index'])->name('profile.index');
 Route::post('/edit-profile', [ProfileController::class, 'store'])->name('profile.store');
 
-
-
 // Voucher
-Route::get('/detail-order/{id}', [VoucherController::class, 'generatePDF'])->name('generate.pdf');
 Route::get('descargar-pdf/{id}', [VoucherController::class, 'downloadPDF'])->name('pdf.descargar');
-Route::get('/pdf', [VoucherController::class, 'pdf'])->name('pdf.example');

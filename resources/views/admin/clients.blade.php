@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
+@section('title')
+    Buscar Cliente
+@endsection
 
 @section('content')
 
-    <form action="{{ route('client.search') }}" class="my-12" method="POST" novalidate>
-        @csrf
+    <form action="{{ route('client.search') }}" class="my-12">
         <div class="flex items-center">
             <label for="email_search" class="sr-only">Search</label>
             <div class="relative w-full">
@@ -21,7 +23,7 @@
                 <span class="sr-only">Search</span>
             </button>
 
-            <a type="button" href={{ route('clients.list') }}
+            <a type="button" href={{ route('client.search') }}
                 class="p-2.5 ml-2 text-sm font-medium text-white bg-amber-500 rounded-lg hover:bg-amber-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-refresh hover:animate-spin"
                     width="22" height="22" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none"
@@ -37,6 +39,10 @@
             <p class="bg-red-500 text-white my-2 rounded-lg text-lg text-center p-2">
                 {{ $message }}</p>
         @enderror
+        @if (session('message'))
+            <p class="bg-red-500 text-white my-2 rounded-lg text-lg text-center p-2">
+                {{ session('message') }}</p>
+        @endif
     </form>
 
 
@@ -104,13 +110,13 @@
                             {{-- Nombre de Concierto --}}
                             <td class="px-6 py-4">
                                 <p class="text-center">
-                                    {{ $detail_order->concertDate->name }}
+                                    {{ $detail_order->concertDates->name }}
                                 </p>
                             </td>
                             {{-- Fecha Concierto --}}
                             <td class="px-6 py-4">
                                 <p class="text-center">
-                                    {{ date('d/m/Y', strtotime($detail_order->concertDate->date)) }}
+                                    {{ date('d/m/Y', strtotime($detail_order->concertDates->date)) }}
                                 </p>
                             </td>
                             {{-- Fecha Compra --}}
@@ -165,6 +171,6 @@
             </table>
         </div>
     @else
-        <p class="text-2xl text-white text-center font-bold">No hay clientes por mostrar</p>
+        <p class="text-2xl text-white text-center font-bold">el cliente {{ $client->name }} no ha adquirido entradas</p>
     @endif
 @endsection

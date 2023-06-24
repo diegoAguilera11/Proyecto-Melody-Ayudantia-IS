@@ -40,7 +40,7 @@
                     @enderror
                 </div>
 
-                <input type="submit" value="Registrar"
+                <input type="submit" value="Iniciar Sesión"
                     class="bg-yellow-400 hover:bg-yellow-500 transition-colors cursor-pointer uppercase font-bold text-black rounded w-full p-3">
             </form>
         </div>

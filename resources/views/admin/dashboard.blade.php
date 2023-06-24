@@ -47,7 +47,7 @@
             {{-- Buscar Cliente --}}
             <div>
                 <a data-tooltip-target="tooltip-bottom-cliente" data-tooltip-placement="bottom"
-                    href="#"
+                    href="{{ route('client.search') }}"
                     class="text-center text-black font-bold p-3 bg-red-500 hover:bg-red-800 rounded transition-all">
                     Buscar Cliente
                 </a>

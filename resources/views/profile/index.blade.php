@@ -27,7 +27,7 @@ Editar Perfil
 
                 <div class="mb-5">
                     <label for="email" class="mb-2 block uppercase text-white font-bold">
-                        Correo Electronico
+                        Correo Electrónico
                     </label>
                     <input id="email" name="email" type="text" placeholder="Ingresa tu nombre de usuario"
                         class="border p-3 w-full rounded-lg @error('email') border-red-500

@@ -134,4 +134,26 @@ class ConcertController extends Controller
         $concerts = Concert::withSum('detailOrder', 'total')->get();
         return view('concerts.concerts', compact('concerts'));
     }
+
+    public function searchClient(Request $request)
+    {
+
+        $email = $request->email_search;
+        if ($email == null) {
+            $client = null;
+            return view('admin.clients', [
+                'client' => $client,
+            ]);
+        }
+        $client = User::where('email', "=", $email)->first();
+
+        // Si no se encuentra el cliente se retorna un mensaje de error
+        if (!$client) {
+            return back()->with('message', 'el correo electrónico no existe');
+        }
+
+        return view('admin.clients', [
+            'client' => $client
+        ]);
+    }
 }
