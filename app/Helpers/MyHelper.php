@@ -24,6 +24,9 @@ function makeMessages()
         'quantity.min' => 'La cantidad de entradas debe ser mayor o igual a :min.',
         'pay_method.required' => 'El método de pago es requerido.',
         'date_search.required' => 'Ingrese una fecha válida.',
+        'email_search.required' => 'Ingrese un correo electrónico válido.',
+        'email_search.email' => 'Ingrese un correo electrónico válido.',
+        'email_search.string' => 'Ingrese un correo electrónico válido.',
     ];
 
     return $messages;

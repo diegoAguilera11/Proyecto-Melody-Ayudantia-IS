@@ -135,25 +135,35 @@ class ConcertController extends Controller
         return view('concerts.concerts', compact('concerts'));
     }
 
+    public function clients()
+    {
+        $client = null;
+        return view('admin.clients', [
+            'message' => null,
+            'client' => $client,
+            'detail_orders' => null
+        ]);
+    }
+
     public function searchClient(Request $request)
     {
 
         $email = $request->email_search;
-        if ($email == null) {
-            $client = null;
-            return view('admin.clients', [
-                'client' => $client,
-            ]);
-        }
         $client = User::where('email', "=", $email)->first();
 
-        // Si no se encuentra el cliente se retorna un mensaje de error
         if (!$client) {
-            return back()->with('message', 'el correo electrónico no existe');
+            return view('admin.clients', [
+                'message' => 'el correo electrónico no existe',
+                'client' => $client,
+                'detail_orders' => null
+            ]);
         }
 
+        $detail_orders = DetailOrder::where('user_id', $client->id)->paginate(5);
         return view('admin.clients', [
-            'client' => $client
+            'message' => null,
+            'client' => $client,
+            'detail_orders' => $detail_orders
         ]);
     }
 }

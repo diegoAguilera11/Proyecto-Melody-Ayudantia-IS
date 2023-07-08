@@ -1,12 +1,8 @@
 @extends('layouts.app')
 
-@section('title')
-    Buscar Cliente
-@endsection
-
 @section('content')
 
-    <form action="{{ route('client.search') }}" class="my-12">
+    <form action="{{ route('client.search') }}" class="my-12" method="GET" novalidate>
         <div class="flex items-center">
             <label for="email_search" class="sr-only">Search</label>
             <div class="relative w-full">
@@ -23,7 +19,7 @@
                 <span class="sr-only">Search</span>
             </button>
 
-            <a type="button" href={{ route('client.search') }}
+            <a type="button" href={{ route('clients.list') }}
                 class="p-2.5 ml-2 text-sm font-medium text-white bg-amber-500 rounded-lg hover:bg-amber-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-refresh hover:animate-spin"
                     width="22" height="22" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none"
@@ -35,19 +31,14 @@
                 <span class="sr-only">Search</span>
             </a>
         </div>
-        @error('email_search')
-            <p class="bg-red-500 text-white my-2 rounded-lg text-lg text-center p-2">
-                {{ $message }}</p>
-        @enderror
-        @if (session('message'))
-            <p class="bg-red-500 text-white my-2 rounded-lg text-lg text-center p-2">
-                {{ session('message') }}</p>
-        @endif
     </form>
 
-
     @if ($client == null)
-    @elseif($client->concertsClient()->count() > 0)
+        @if ($message)
+            <p class="bg-red-500 text-white rounded-xl text-lg text-center py-2">
+                {{ $message }}</p>
+        @endif
+    @elseif($detail_orders->count() > 0)
         <h2 class="text-center text-white text-3xl font-bold uppercase my-10">Cliente {{ $client->name }}</h2>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -97,7 +88,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($client->concertsClient as $detail_order)
+                    @foreach ($detail_orders as $detail_order)
                         <tr
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             {{-- Numero de reserva --}}
@@ -170,7 +161,12 @@
                 </tbody>
             </table>
         </div>
-    @else
-        <p class="text-2xl text-white text-center font-bold">el cliente {{ $client->name }} no ha adquirido entradas</p>
+        @if ($detail_orders)
+            <div class="flex justify-center items-center mx-auto my-8">
+                {{ $detail_orders->appends(['email_search' => $client->email])->links('pagination::tailwind') }}
+            </div>
+        @endif
+    @elseif($client)
+        <p class="text-2xl text-white text-center font-bold">El cliente {{ $client->name }} no ha adquirido entradas</p>
     @endif
 @endsection

@@ -47,7 +47,7 @@
             {{-- Buscar Cliente --}}
             <div>
                 <a data-tooltip-target="tooltip-bottom-cliente" data-tooltip-placement="bottom"
-                    href="{{ route('client.search') }}"
+                    href="{{ route('clients.list') }}"
                     class="text-center text-black font-bold p-3 bg-red-500 hover:bg-red-800 rounded transition-all">
                     Buscar Cliente
                 </a>
@@ -63,7 +63,7 @@
             {{-- Recaudación --}}
             <div>
                 <a data-tooltip-target="tooltip-bottom-recaudacion" data-tooltip-placement="bottom"
-                    href="#"
+                    href="{{ route('collection.index') }}"
                     class="text-center text-black font-bold p-3 bg-red-500 hover:bg-red-800 rounded transition-all">
                     Recaudación
                 </a>
