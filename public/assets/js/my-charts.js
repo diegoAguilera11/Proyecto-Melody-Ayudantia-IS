@@ -3,14 +3,11 @@ let select = document.getElementById('chartType');
 let chartContainer = document.getElementById('chartContainer');
 let ctx = document.getElementById('myChart');
 let chartHTML = document.getElementById('chart');
-let spinner = document.getElementById('spinner');
-
 
 let chart = null;
 
 // Función para generar el gráfico según la selección del <select>
 function generateChart() {
-    console.log('entra');
     // Obtener el valor seleccionado del <select>
     let selectedValue = select.value;
     console.log(selectedValue);
@@ -23,7 +20,6 @@ function generateChart() {
 
     // Generar el nuevo gráfico según el valor seleccionado
     if (selectedValue === 'bar-concerts') {
-        // spinner.hidden = false;
         // Realizamos una solicitud Fetch para obtener el listado de conciertos con su total vendido
         fetch('/all-concert-sales')
             .then(response => response.json())
@@ -39,8 +35,8 @@ function generateChart() {
                     }
                     return 0
                 })
-                // console.log(labels);
-                // console.log(values);
+                console.log(labels);
+                console.log(values);
 
                 // Crea el contexto del gráfico
                 // const ctx = document.getElementById('myChart');
@@ -51,7 +47,6 @@ function generateChart() {
                     data: {
                         labels: labels,
                         datasets: [{
-                            label: null,
                             data: values,
                             backgroundColor: [
                                 'rgba(251, 77, 66, 0.25)',
@@ -60,7 +55,7 @@ function generateChart() {
                                 'rgba(255, 1, 190,0.25)',
                                 'rgba(0, 212, 161, 0.25)'
                             ],
-                            borderWidth: 1
+                            borderWidth: 3
                         }]
                     },
                     options: {
@@ -172,7 +167,6 @@ function generateChart() {
                         }
                     }
                 });
-                console.log(chart.data.datasets[0].data);
                 chartHTML.hidden = false;
             })
             .catch(error => {

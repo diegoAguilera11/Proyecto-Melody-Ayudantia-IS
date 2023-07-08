@@ -1,8 +1,13 @@
 @extends('layouts.app')
 
 @section('title')
-Editar Perfil
+    Editar Perfil
 @endsection
+
+@push('sweetAlert')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+@endpush
 
 @section('content')
     <div class="md:flex-row md:justify-center">

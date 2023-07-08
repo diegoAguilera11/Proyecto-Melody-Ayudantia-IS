@@ -4,6 +4,10 @@
     {{ $concert->name }}
 @endsection
 
+@push('sweetAlert')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+@endpush
 
 @section('content')
     <div class="max-w-xl mx-auto my-4 border-b-2 pb-4 bg-gray-100 rounded p-4 mb-8">

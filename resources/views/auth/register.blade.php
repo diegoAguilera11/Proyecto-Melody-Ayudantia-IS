@@ -3,6 +3,11 @@
     Registrar Cliente
 @endsection
 
+@push('sweetAlert')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+@endpush
+
 @section('content')
     <div class="md:flex md:justify-center">
         <div class="md:w-1/2 bg-gray-800 p-6 rounded-lg shadow-lg">
@@ -19,7 +24,7 @@
                 @error('name')
                     border-red-600
                 @enderror"
-                value="{{ old('name') }}">
+                        value="{{ old('name') }}">
                     @error('name')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-lg text-center p-2">{{ $message }}</p>
                     @enderror
@@ -33,7 +38,7 @@
                         class="border p-2 rounded-lg w-full
                 @error('email') border-red-600
                 @enderror"
-                value="{{ old('email') }}">
+                        value="{{ old('email') }}">
                     @error('email')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-lg text-center p-2">{{ $message }}</p>
                     @enderror
@@ -60,29 +65,28 @@
 @endsection
 
 @section('alerts')
-<script>
-    // Aqui va nuestro script de sweetalert
-    const boton = document.getElementById("boton");
-    const formulario = document.getElementById("formulario");
+    <script>
+        // Aqui va nuestro script de sweetalert
+        const boton = document.getElementById("boton");
+        const formulario = document.getElementById("formulario");
 
-    boton.addEventListener('click', (e) => {
-        e.preventDefault();
-        Swal.fire({
-            title: '¿Estás seguro que quieres enviar estos datos?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#4DD091',
-            cancelButtonColor: '#FF5C77',
-            confirmButtonText: 'Enviar',
-            cancelButtonText: 'Cancelar',
-            allowOutsideClick: false,
-        }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
-                formulario.submit();
-            }
+        boton.addEventListener('click', (e) => {
+            e.preventDefault();
+            Swal.fire({
+                title: '¿Estás seguro que quieres enviar estos datos?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#4DD091',
+                cancelButtonColor: '#FF5C77',
+                confirmButtonText: 'Enviar',
+                cancelButtonText: 'Cancelar',
+                allowOutsideClick: false,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    formulario.submit();
+                }
+            })
         })
-    })
-</script>
+    </script>
 @endsection
-

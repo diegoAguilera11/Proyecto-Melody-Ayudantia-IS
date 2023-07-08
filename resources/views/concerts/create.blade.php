@@ -3,6 +3,11 @@
     Crear Concierto
 @endsection
 
+@push('sweetAlert')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+@endpush
+
 @section('content')
     <div class=" bg-gray-800 p-6 rounded-lg shadow-lg">
         <h2 class="text-center text-white uppercase font-bold text-3xl p-4">Registra un Concierto</h2>
